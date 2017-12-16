@@ -9,6 +9,11 @@ Process MP3 ID3 tag for songs downloaded from 動漫花園 Mashin.
 Original ablum: "because the sky…"  
 New ablum: "「DYNAMIC CHORD」EDテーマ「because the sky…」"
 
+## Dependencies
+
+- python2
+- [Mutagen](http://mutagen.readthedocs.io/en/latest/index.html)
+
 ## Run
 
 - Run in same directory as the songs
