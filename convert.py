@@ -1,18 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import glob
-from mutagen.easyid3 import EasyID3
-import sys
+from __future__ import print_function
 
-song_list = glob.glob(u'*/*.mp3')
+import glob
+import sys
+import codecs
+
+from mutagen.easyid3 import EasyID3
+
+# sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
+
+song_list = glob.glob(u'**/*.mp3', recursive=True)
+
+print(song_list)
 
 for file in song_list:
 	# get tag
 	song = EasyID3(file)
-	print 'Old album: '+str(song['album']).encode(sys.stdout.encoding, errors='replace')
+	# print('Old album: '+str(song['album']).encode(sys.stdout.encoding, errors='replace'))
+	print('Old album: ' + song['album'][0])
 
 	# get album name
-	album = file
+	album = file.replace(u'『', u'「').replace(u'』',u'」')
 	start = album.find(u']') # [yymmdd] ...
 	if start >= 0:
 		album = album[start+1:]
@@ -27,7 +36,8 @@ for file in song_list:
 	end = album.find(u'」／') # ...／artist
 	if end >= 0:
 		album = album[:end+1]
-	print 'New album: '+album.encode(sys.stdout.encoding, errors='replace')
+	# print('New album: '+album.encode(sys.stdout.encoding, errors='replace'))
+	print('New album: ' + album)
 
 	# set new album
 	song['album'] = album
