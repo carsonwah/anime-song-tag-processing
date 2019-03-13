@@ -5,18 +5,23 @@ Process MP3 ID3 tag for songs downloaded from 動漫花園 Mashin.
 ## Main function
 
 - Modify "Album" attribute of songs for better information in tags  
-  - E.g. [171018] TVアニメ「DYNAMIC CHORD」EDテーマ「because the sky…」／KYOHSO [MP3]  
-Original ablum: "because the sky…"  
-New ablum: "「DYNAMIC CHORD」EDテーマ「because the sky…」"
+  - E.g. Filename: `[171018] TVアニメ「DYNAMIC CHORD」EDテーマ「because the sky…」／KYOHSO [MP3]`
+      - Original ablum tag: `"because the sky…"`
+      - New ablum tag: `"「DYNAMIC CHORD」EDテーマ「because the sky…」"`
 
 ## Dependencies
 
-- python2
+- python3
 - [Mutagen](http://mutagen.readthedocs.io/en/latest/index.html)
 
 ## Run
 
 - Run in same directory as the songs
+
+```bash
+cd songs/
+python convert.py
+```
 
 ## Other useful tools
 
